@@ -1,15 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./App.css";
+import Tiles from "./Tiles";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div id="tiles" className="App">
-
-    </div>
-  )
+  return <div className="App">
+    <Tiles />
+  </div>;
 }
 
-export default App
+export default App;
