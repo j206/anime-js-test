@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import anime from "animejs";
-import "./Tiles.css";
+import randomColor from "randomcolor";
+import "./Tiles.scss";
 
 function Tiles() {
   // super busted
@@ -10,6 +11,8 @@ function Tiles() {
     getGridSize();
     window.addEventListener("resize", getGridSize);
   });
+
+
 
   const handleStagger = (i) => {
     const { columns, rows } = gridsize;
@@ -25,7 +28,7 @@ function Tiles() {
   const getGridSize = () => {
     const columns = Math.floor(document.body.clientWidth / 50);
     const rows = Math.floor(document.body.clientHeight / 50);
-
+    console.log(document.body.clientWidth, document.body.clientHeight);
     // setGridsize({ columns, rows, total: rows * columns });
     console.log(gridsize);
     
