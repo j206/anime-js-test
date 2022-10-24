@@ -9,17 +9,21 @@ function Tiles() {
   useEffect(() => {
     getGridSize();
     window.addEventListener("resize", getGridSize);
-    document.title = `Columns: ${gridsize.columns} | Rows: ${gridsize.rows} | Total: ${gridsize.total}`;
   }, []);
 
   const handleStagger = (i) => {
+    console.log('handleStagger called')
     const { columns, rows } = gridsize;
     const el = i.target.id;
 
     anime({
       targets: ".grid-item",
       backgroundColor: randomColor(),
-      delay: anime.stagger(50, { grid: [columns, rows], from: el }),
+      scale: [
+        { value: 0.5, easing: "easeOutSine", duration: 150 },
+        { value: 1, easing: "easeInOutQuad", duration: 300 },
+      ],
+      // delay: anime.stagger(100, { grid: [columns, rows], from: el }),
     });
   };
 
@@ -30,14 +34,13 @@ function Tiles() {
 
     anime({
       targets: ".grid-item",
-      backgroundColor: "#000",
-      duration: 0,
-      easing: "linear"
-    })
+      backgroundColor: "#fff",
+      duration: 500,
+      easing: "linear",
+    });
   };
 
   const { total, columns, rows } = gridsize;
-
 
   return (
     <div id="grid">

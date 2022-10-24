@@ -1,6 +1,6 @@
 :root {
   body {
-    background: black;
+    background: white;
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -17,7 +17,7 @@
       .grid-item {
         min-width: 100%;
         min-height: 100%;
-        background-color: black;
+        background-color: white;
         cursor: pointer;
         position: relative;
         &:after {
@@ -27,7 +27,7 @@
           height: 100%;
           left: 0;
           top: 0;
-          outline: 1px solid white;
+          outline: 1px solid gray;
           display: block;
         }
         &:hover {
