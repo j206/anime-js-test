@@ -12,7 +12,6 @@ function Tiles() {
   }, []);
 
   const handleStagger = (i) => {
-    console.log('handleStagger called')
     const { columns, rows } = gridsize;
     const el = i.target.id;
 
