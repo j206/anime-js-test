@@ -4,15 +4,13 @@ import randomColor from "randomcolor";
 import "./Tiles.scss";
 
 function Tiles() {
-  // super busted
   const [gridsize, setGridsize] = useState({ columns: 0, rows: 0, total: 1 });
 
   useEffect(() => {
     getGridSize();
     window.addEventListener("resize", getGridSize);
-  });
-
-
+    document.title = `Columns: ${gridsize.columns} | Rows: ${gridsize.rows} | Total: ${gridsize.total}`;
+  }, []);
 
   const handleStagger = (i) => {
     const { columns, rows } = gridsize;
@@ -28,22 +26,23 @@ function Tiles() {
   const getGridSize = () => {
     const columns = Math.floor(document.body.clientWidth / 50);
     const rows = Math.floor(document.body.clientHeight / 50);
-    console.log(document.body.clientWidth, document.body.clientHeight);
-    // setGridsize({ columns, rows, total: rows * columns });
-    console.log(gridsize);
-    
+    setGridsize({ columns, rows, total: rows * columns });
+
+    anime({
+      targets: ".grid-item",
+      backgroundColor: "#000",
+      duration: 0,
+      easing: "linear"
+    })
   };
 
   const { total, columns, rows } = gridsize;
 
+
   return (
     <div id="grid">
       {[...Array(total)].map((x, i) => (
-        <div
-          className="grid-item"
-          id={i}
-          onClick={(i) => handleStagger(i)}
-        />
+        <div className="grid-item" id={i} onClick={(i) => handleStagger(i)} />
       ))}
     </div>
   );
